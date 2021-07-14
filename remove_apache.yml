@@ -1,0 +1,13 @@
+---
+- hosts : all
+  become : true
+  tasks : 
+
+  - name : stop apache2 service
+    systemd :
+      state : stopped
+      name : apache2
+  - name : uninstall apache2 package
+    apt : 
+      name : apache2
+      state : absent

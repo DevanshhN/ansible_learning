@@ -1,0 +1,12 @@
+---
+- hosts : all
+  become : true
+  tasks : 
+
+  - name : install apache2 package
+    apt : 
+      name : apache2
+  - name : start apache2 service
+    systemd :
+      state : started 
+      name : apache2
