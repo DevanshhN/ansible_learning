@@ -6,7 +6,19 @@
   - name : install apache2 package
     apt : 
       name : apache2
+    when : ansible_distribution == "Ubuntu"
   - name : start apache2 service
     systemd :
       state : started 
       name : apache2
+    when : ansible_distribution == "Ubuntu"
+
+  - name : install httpd package
+    yum : 
+      name : httpd
+    when : ansible_distribution == "CentOS"
+  - name : start httpd service
+    systemd :
+      state : started 
+      name : httpd
+    when : ansible_distribution == "CentOS"
